@@ -1,5 +1,5 @@
 {
-    "ALBName": "dc-alb",
+    "ALBName": "teamcenter-dc-alb",
     "Subnets": ["subnet-1", "subnet-2"],
     "SecurityGroups": ["sg-1", "sg-2"]
   }
