@@ -1,0 +1,14 @@
+Parameters:
+  ALBName:
+    Type: String
+  Subnets:
+    Type: List<String>
+  SecurityGroups:
+    Type: List<String>
+Resources:
+  ApplicationLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: !Ref ALBName
+      Subnets: !Ref Subnets
+      SecurityGroups: !Ref SecurityGroups

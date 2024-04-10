@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  Descriptor:
+    Type: String
+    Default: "teamcenter-dc-alb"
+    AllowedValues: ["teamcenter-dc-alb"]
+Resources:
+  ALBStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://s3.amazonaws.com/my-bucket/nested-stacks/alb-nested-stack.yml
+      Parameters:
+       # ALBName: !GetAtt [Descriptors, Instances.${Descriptor}.ALBName]
+       # Subnets: !GetAtt [Descriptors, Instances.${Descriptor}.Subnets]
+       # SecurityGroups: !GetAtt [Descriptors, Instances.${Descriptor}.SecurityGroups]
+
+  Descriptors:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Type: String
+      Value: !Sub '${FileContents}'
+      Description: "Descriptor file content"
